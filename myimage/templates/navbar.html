@@ -14,14 +14,10 @@
               Locations
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% for cat in mylocations %}
-              <a class="dropdown-item" href="{% url 'mylocations' loc %}">{{loc}}</a>
+                {% for loc in mylocation %}
+              <a class="dropdown-item" href="{% url 'myLocations' loc %}">{{loc}}</a>
               {% endfor %}
-  
-              <!-- <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">comics</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">regular</a> -->
+
             </div>
           </li>
         
