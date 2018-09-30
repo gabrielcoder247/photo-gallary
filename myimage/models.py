@@ -34,12 +34,12 @@ class Image(models.Model):
     @classmethod
     def search_image(cls, category):
 
-        searches = cls.objects.all(category__name__icontain = category).all()
+        searches = cls.objects.all(Category__name__icontain = category).all()
         return searches
 
     @classmethod
     def filter_by_location(self):
-        locations = cls.objects.filter(location__name__icontain = location).all()
+        locations = cls.objects.filter(Location__name__icontain = location).all()
 
         return locations          
 
@@ -63,13 +63,11 @@ class Location(models.Model):
         ('St.peterburg','St.peterburg'),
         ('Abuja','Abuja'),
         ('Yola','Yola'),
-        ('Mombasa','Mombasa'),
-        ('Dushanbe','Dushanbe'),
-        ('Dar es salaam', 'Dar es salaam')
+       
 
         )           
 
-    name = models.CharField(max_length = 100, choices = PLACES)
+    location = models.CharField(max_length = 100, choices = PLACES)
 
 
 
@@ -94,7 +92,19 @@ class Location(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length = 30)
+
+    '''
+    Image categories model
+    '''
+
+    CATEGORIES = (   
+        ('comics','comics'),
+        ('general','general'),
+        ('regular','regular')
+        )
+       
+
+    name = models.CharField(max_length = 30, choices= CATEGORIES)
 
 
 
