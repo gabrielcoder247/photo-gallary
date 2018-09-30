@@ -67,7 +67,7 @@ class Location(models.Model):
 
         )           
 
-    location = models.CharField(max_length = 100, choices = PLACES)
+    name = models.CharField(max_length = 100, choices = PLACES)
 
 
 

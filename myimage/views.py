@@ -4,7 +4,7 @@ from .models import Image
 
 global locations, categories
 locations = ['Nairobi','Lagos','Moscow','St.peterburg','Abuja','Yola']
-categoriess = ['comics','general','regular']
+categories = ['comics','general','regular']
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ def index(request):
     '''
     images = Image.objects.all()
 
-    return render (request, index.html, {"images":images, "locations":locations,"categories":categories})
+    return render(request, 'index.html', {"images":images, "locations":locations,"categories":categories})
 
 
 
