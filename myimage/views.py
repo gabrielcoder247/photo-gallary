@@ -17,6 +17,28 @@ def index(request):
 
     return render(request, 'index.html', {"images":images, "locations":locations,"categories":categories})
 
+def search_results(request): 
+      
+    if 'image' in request.GET and request.GET["image"]:
+        search_term =request.GET.get("image")
+        search_images = Image.search_image(search_term)
+        message = f"{search_term}"
+
+        return render(request,'search.html',{"message":message, "searched":search_images})
+
+    else:
+
+        message = "You haven't searched for any term"
+        return render(request, 'search.html', {"message":message})    
+
+def get_image_by_category(request):
+
+    images =Image.objects.filter_by_category (category)
+
+    return render(request, 'category.html', {"images":images, "location":location, "category":category})     
+
+
+
 
 
 

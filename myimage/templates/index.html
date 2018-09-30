@@ -19,15 +19,15 @@
               <div class="card" style="width:400px">
                   <img src="{{image.image_path.url}}" class="card-img-top" alt="Card image" style="width:100%">
                   <div class="card-body">
-                      <h5 class="card-title">
-                        <small> Name:</small>{{image.title}} - </h5>
+                      <h4 class="card-title">
+                        <small> Title: {{image.title}}</small></h4>
                         <p> Description: {{image.description}}</p>
         
                   <div class="modal-footer">
                         <button type="button" class="btn btn-outline-success " onclick="copy('{{image.id}}')">Copy Link</button>
                         <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button> 
                         <br>
-                        <h6 class="image-footer" text-center>Taken on: {{image.pub_date}}</h6>           
+                        <small><p class="image-footer text-center" >Taken by {{image.name}} since {{image.pub_date|timesince}} ago </p></small>           
                   </div>
                        
               </div>
