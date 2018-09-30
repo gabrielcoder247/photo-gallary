@@ -16,12 +16,39 @@ class Image(models.Model):
     def save_image(self):
         self.save()
 
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def update_image(cls, id, update):
+        updated =cls.objects.filter(id=id).update(image = update)
+
+        return updated
+        
+
+    @classmethod
+    def get_image_by_id(cls, id):
+        images = cls.objects.all(id = id).all()
+        return images
+                
+    @classmethod
+    def search_image(cls, category):
+
+        searches = cls.objects.all(category__name__icontain = category).all()
+        return searches
+
+    @classmethod
+    def filter_by_location(self):
+        locations = cls.objects.filter(location__name__icontain = location).all()
+
+        return locations          
+
     def __str__(self):
         return self.name
         
 
     class meta:
-        ordering = ['name'] 
+        ordering = ['-pub_date'] 
 
 
 
@@ -49,6 +76,17 @@ class Location(models.Model):
     def save_location(self):
         self.save()
 
+
+
+    def delete_location(self):
+        self.delete()
+
+    @classmethod
+    def update_location(cls, id, update):
+        updated =cls.objects.filter(id=id).update(location = update)
+
+        return updated    
+
     def __str__(self):
         return self.name
         
@@ -62,6 +100,19 @@ class Category(models.Model):
 
     def save_category(self):
         self.save()
+
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    @classmethod
+    def update_category(cls, id, update):
+        updated =cls.objects.filter(id=id).update(category = update)
+
+        return updated    
 
     def __str__(self):
         return self.name
