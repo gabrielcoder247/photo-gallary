@@ -5,18 +5,20 @@
 {{block.super}}
 
 <script>
-    function copy(ids) {
-        var textCopied = document.getElementById(ids);
-        text = textCopied.src;
-        var elementary = document.createElement("input");
-        document.body.appendChild(elementary);
-        elementary.setAttribute('value', text);
-        elementary.select();
-        document.execCommand("copy");
-        document.body.removeChild(elementary);
-        alert("Copied: " + textCopied.src);
-        }
-</script>
+    function copyLink(id) {
+      /* Get the text field */
+      var copyText = document.getElementById( "thislinkhere-" + id );
+
+      /* Select the text field */
+      copyText.select();
+
+      /* Copy the text inside the text field */
+      document.execCommand( "copy" );
+
+      /* Alert the copied text */
+      alert( "copied: " + copyText.value );
+    }
+  </script>
 
 
 <div class "container">
@@ -41,7 +43,7 @@
                         <p> Description: {{image.description}}</p>
         
                   <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-success " onclick="copy('{{image.id}}')">Copy Link</button>
+                        <a  onclick="copy('{{image.id}}')"><button type="button" class="btn btn-outline-success">Copy Link</button></a> 
                         <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button> 
                         <br>
                         <small><p class="image-footer text-center" >Taken by {{image.name}} since {{image.pub_date|timesince}} ago </p></small>           
