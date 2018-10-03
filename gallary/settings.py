@@ -87,24 +87,25 @@ WSGI_APPLICATION = 'gallary.wsgi.application'
 # development
 if config('MODE')=="dev":
 
-DATABASE = {
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'gallery',
         'USER': 'gabrielcoder',
         'PASSWORD': 'dushanbe2015',
+        }
     }
-}
 else:
-   DATABASES = {
+    DATABASES = {
        'default': dj_database_url.config(
            default=config('DATABASE_URL')
        )
    }
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())   
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
+
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())   
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
