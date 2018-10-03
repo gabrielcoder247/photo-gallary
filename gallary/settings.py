@@ -21,19 +21,19 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=zo499_zizidtxmkli*447=r@7)cg8ppqjbmxln5k2y#33_bls'
+# SECRET_KEY = '=zo499_zizidtxmkli*447=r@7)cg8ppqjbmxln5k2y#33_bls'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -89,10 +89,12 @@ if config('MODE')=="dev":
 
     DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gallery',
-        'USER': 'gabrielcoder',
-        'PASSWORD': 'dushanbe2015',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('gallery'),
+        'USER': confi('gabrielcoder'),
+        'PASSWORD': confi('dushanbe2015'),
+        'HOST': '',
+        'PORT': '',
         }
     }
 else:
@@ -150,15 +152,15 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 #staticfile storage location
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
