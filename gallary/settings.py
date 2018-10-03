@@ -138,3 +138,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+#staticfile storage location
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+# DATABASE_URL= 'postgres://zpsekwenrsjcnh:23b017d6cbce2af42fa244e810b609e09c105fb8c3bad6fb844fd4e228ad90b5@ec2-75-101-153-56.compute-1.amazonaws.com:5432/d3hc8kdj158md9'
