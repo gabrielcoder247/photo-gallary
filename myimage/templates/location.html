@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class "container">
+        <div class="row">
+    <!-- looping through news -->
+    {% for image in images %}
+        <!-- display News articles -->
+        <div class = "col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class = "image-container">
+                <a class="thumbnail" data-image-id="{{image.id}}" data-toggle="modal" data-title="{{image.name}}" data-caption="{{image.description}}" data-image="{{image.image_path.url}}" data-target="#{{image.id}}">
+                    <img src="{{image.image_path.url}}" alt="{{image.description}}" id="img{{image.id}}" class="img-thumbnail" alt="Image">
+                </a>
+    <!-- Displays modal nested in cards -->
+    <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:100px!important">
+          <div class="modal-content">
+              <div class="card" style="width:400px">
+                  <img src="{{image.image_path.url}}" class="card-img-top" alt="Card image" style="width:100%">
+                  <div class="card-body">
+                      <h4 class="card-title">
+                        <small> Title: {{image.title}}</small></h4>
+                        <p> Description: {{image.description}}</p>
+        
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success " onclick="copy('{{image.id}}')">Copy Link</button>
+                        <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button> 
+                        <br>
+                        <small><p class="image-footer text-center" >Taken by {{image.name}} since {{image.pub_date|timesince}} ago </p></small>           
+                  </div>
+                       
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+{% empty %}
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2 class="text-center">No images yet!</h2>
+</div>
+   
+{% endfor %}
+
+</div> 
+</div>
+
+{% endblock %}
+

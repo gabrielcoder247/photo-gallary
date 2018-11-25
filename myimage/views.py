@@ -33,16 +33,16 @@ def search_results(request):
 
 def get_image_by_category(request,cat):
 
-    images =Image.objects.filter_by_category(cat)
+    images =Image.filter_by_category(cat)
 
     return render(request, 'category.html', {"images":images, "locations":locations, "categories":categories})  
 
 
-def get_image_by_location(request,lo):
+def get_image_by_location(request,loc):
 
-    places =Image.objects.filter_by_location(loc)
+    places =Image.filter_by_location(loc)
 
-    return render(request, 'category.html', {"places":places, "locations":locations, "categories":categories})     
+    return render(request, 'location.html', {"places":places, "locations":locations, "categories":categories})     
 
 
 
